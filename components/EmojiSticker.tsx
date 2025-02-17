@@ -1,11 +1,10 @@
-import { View } from 'react-native';
-import { Image, type ImageSource } from 'expo-image';
+import { type ImageSource } from 'expo-image';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 type Props = {
   imageSize: number;
@@ -34,7 +33,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
       translateX.value = offsetX.value;
       translateY.value = offsetY.value;
     })
-    .onChange((event) => {
+    .onChange(event => {
       translateX.value = offsetX.value + event.translationX;
       translateY.value = offsetY.value + event.translationY;
     })

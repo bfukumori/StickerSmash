@@ -1,32 +1,31 @@
-import { View, StyleSheet, Platform } from 'react-native';
-
-import PlaceHolderImage from '@/assets/images/background-image.png';
-import ImageViewer from '@/components/ImageViewer';
-import Button from '@/components/Button';
-
+import domtoimage from 'dom-to-image';
+import { type ImageSource } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 import { useRef, useState } from 'react';
-import IconButton from '@/components/IconButton';
-import CircleButton from '@/components/CircleButton';
-import EmojiPicker from '@/components/EmojiPicker';
-import EmojiList from '@/components/EmojiList';
-import { type ImageSource } from 'expo-image';
-import EmojiSticker from '@/components/EmojiSticker';
+import { Platform, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { captureRef } from 'react-native-view-shot';
-import domtoimage from 'dom-to-image';
+
+import PlaceHolderImage from '@/assets/images/background-image.png';
+import Button from '@/components/Button';
+import CircleButton from '@/components/CircleButton';
+import EmojiList from '@/components/EmojiList';
+import EmojiPicker from '@/components/EmojiPicker';
+import EmojiSticker from '@/components/EmojiSticker';
+import IconButton from '@/components/IconButton';
+import ImageViewer from '@/components/ImageViewer';
 
 export default function Index() {
   const [status, requestPermission] = MediaLibrary.usePermissions();
 
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [pickedEmoji, setPickedEmoji] = useState<ImageSource | undefined>(
-    undefined
+    undefined,
   );
 
   const imageRef = useRef<View>(null);
@@ -86,7 +85,7 @@ export default function Index() {
             quality: 0.95,
             width: 320,
             height: 440,
-          }
+          },
         );
         let link = document.createElement('a');
         link.download = 'sticker-smash.jpeg';
